@@ -45,6 +45,10 @@ education["address"] = "Pittsburgh, PA";
  /*Work swap*/
  var formattedWorkName = HTMLworkEmployer.replace("%data%", work.employer);
 
+/*Eductaion Info*/
+var formattedSchoolName = HTMLschoolName.replace("%data%", education["school"]);
+var formattedSchoolDegree = HTMLschoolDegree.replace("%data%", education["major"]);
+
 /*Append template and other values to DOM*/
  $("#header").prepend(formattedRole);
  $("#header").prepend(formattedName);
@@ -62,3 +66,7 @@ education["address"] = "Pittsburgh, PA";
 
 $("#workExperience").append(HTMLworkStart);
 $("#workExperience").append(formattedWorkName);
+$("#education").append(HTMLschoolStart);
+$("#education").append(formattedSchoolName);
+$("#education").append(formattedSchoolDegree);
+console.log(formmatedSchoolName+' '+formattedSchoolDegree);
