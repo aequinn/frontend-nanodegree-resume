@@ -133,7 +133,7 @@ if(bio.contacts){
     $("#topContacts").append(formattedContact);
   }
 }
-console.log(bio.welcomeMessage);
+
 if(bio.welcomeMessage.length >0){
   $("#header").append(HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage));
 }
@@ -147,17 +147,38 @@ if(bio.skills.length > 0){
 };
 
 //Check for work history and add work if it is available
-if(work.jobs.length > 0){
+/*Function for displaying the work section*/
+function displayWork(){
+  if(work.jobs.length > 0){
+    //itereate through the jobs and fill out the section for eachone then add it to the page
+    for(job in work.jobs){
+      $("#workExperience").append(HTMLworkStart);
+      //Add Employer & Title
+      $(".work-entry:last").append(HTMLworkEmployer.replace("%data%",work.jobs[job].employer) + ' '+HTMLworkTitle.replace("%data%", work.jobs[job].title));
+      //Add job Location
+      $(".work-entry:last").append(HTMLworkLocation.replace("%data%",work.jobs[job].location));
+      //Add job dates
+      $(".work-entry:last").append(HTMLworkDates.replace("%data%",work.jobs[job].datesWorked));
+      //Add job Description
+      $(".work-entry:last").append(HTMLworkDescription.replace("%data%",work.jobs[job].description));
+    }
+  };
+}
+displayWork();
 
-  for(job in work.jobs){
-    $("#workExperience").append(HTMLworkStart);
-    //Add Employer & Title
-    $(".work-entry:last").append(HTMLworkEmployer.replace("%data%",work.jobs[job].employer) + ' '+HTMLworkTitle.replace("%data%", work.jobs[job].title));
-    //Add job Location
-    $(".work-entry:last").append(HTMLworkLocation.replace("%data%",work.jobs[job].location));
-    //Add job dates
-    $(".work-entry:last").append(HTMLworkDates.replace("%data%",work.jobs[job].datesWorked));
-    //Add job Description
-    $(".work-entry:last").append(HTMLworkDescription.replace("%data%",work.jobs[job].description));
-  }
-};
+/*Internationalization Button*/
+$("#main").append(internationalizeButton);
+
+function inName(name){
+
+  var newName = name.trim().toLowerCase().split(" ");
+  var firstName = newName[0].slice(0,1).toUpperCase();
+  firstName = firstName + newName[0].slice(1).toLowerCase();
+  var lastName = newName[1].toUpperCase();
+
+  return firstName + " " +  lastName;;
+}
+/*Click Tracking*/
+$(document).click(function(loc){
+  logClicks(loc.pageX, loc.pageY);
+});
