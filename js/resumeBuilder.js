@@ -1,3 +1,5 @@
+
+
 /*
 Using object literal notation to create an objects. Object with peronsal information
  */
@@ -21,6 +23,7 @@ Using object literal notation to create an objects. Object with peronsal informa
      "JavaScript"
    ]
  };
+
 /* A work history object, created using literal notation*/
 var work = {
   "jobs" : [
@@ -112,4 +115,32 @@ var education = {
       "url" : "https://www.coursera.com"
     }
   ]
+};
+/*Fill in main bio*/
+
+
+/*Logic checks for certain sections*/
+
+//Check if they have skillz and add them to the site
+if(bio.skills.length > 0){
+  $("#header").append(HTMLskillsStart);
+  for(i=0; i<bio.skills.length; i++){
+    $("#skills").append(HTMLskills.replace("%data%",bio.skills[i]));
+  }
+};
+
+//Check for work history and add work if it is available
+if(work.jobs.length > 0){
+
+  for(job in work.jobs){
+    $("#workExperience").append(HTMLworkStart);
+    //Add Employer & Title
+    $(".work-entry:last").append(HTMLworkEmployer.replace("%data%",work.jobs[job].employer) + ' '+HTMLworkTitle.replace("%data%", work.jobs[job].title));
+    //Add job Location
+    $(".work-entry:last").append(HTMLworkLocation.replace("%data%",work.jobs[job].location));
+    //Add job dates
+    $(".work-entry:last").append(HTMLworkDates.replace("%data%",work.jobs[job].datesWorked));
+    //Add job Description
+    $(".work-entry:last").append(HTMLworkDescription.replace("%data%",work.jobs[job].description));
+  }
 };
