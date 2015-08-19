@@ -116,10 +116,27 @@ var education = {
     }
   ]
 };
-/*Fill in main bio*/
-
 
 /*Logic checks for certain sections*/
+
+/*Fill in main bio*/
+
+$("#header").prepend(HTMLbioPic.replace("%data%", bio.pictureURL));
+$("#header").prepend(HTMLheaderRole.replace("%data%", bio.role));
+$("#header").prepend(HTMLheaderName.replace("%data%", bio.name));
+
+/*Fill in contats*/
+if(bio.contacts){
+  for(contact in bio.contacts){
+    var formattedContact = HTMLcontactGeneric.replace("%contact%", contact);
+    formattedContact = formattedContact.replace("%data%", bio.contacts[contact]);
+    $("#topContacts").append(formattedContact);
+  }
+}
+console.log(bio.welcomeMessage);
+if(bio.welcomeMessage.length >0){
+  $("#header").append(HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage));
+}
 
 //Check if they have skillz and add them to the site
 if(bio.skills.length > 0){
