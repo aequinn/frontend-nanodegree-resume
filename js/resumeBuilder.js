@@ -52,13 +52,17 @@ var work = {
 };
 
 /*Projects object*/
-var projets = {
+var projects = {
   "projects" : [
     {
       "title" : "Masters Capstone Project",
       "datesWorked" : "Sept 2009 - Dec 2009",
       "description" : "Lead a team of six in research on the internet of things and home automation",
-      "images" : [ ]
+      "images" : [
+        "images/Capstone_CompLandscape.jpg",
+        "images/Capstone_Ecosystem.jpg",
+        "images/Capstone_surveyResearch.jpg"
+       ]
     }]
   };
 /* Education Object*/
@@ -161,7 +165,7 @@ function displayWork(){
       $(".work-entry:last").append(HTMLworkDates.replace("%data%",work.jobs[job].datesWorked));
       //Add job Description
       $(".work-entry:last").append(HTMLworkDescription.replace("%data%",work.jobs[job].description));
-    }
+    };
   };
 }
 displayWork();
@@ -182,3 +186,25 @@ function inName(name){
 $(document).click(function(loc){
   logClicks(loc.pageX, loc.pageY);
 });
+
+/*Add Encapsulated function to projects*/
+projects.display = function(){
+  console.log(projects.projects);
+  if(projects.projects.length > 0){
+
+    for (project in projects.projects){
+      $("#projects").append(HTMLprojectStart);
+      console.log(projects.projects[project].title);
+      $(".project-entry").append(HTMLprojectTitle.replace("%data%", projects.projects[project].title));
+      $(".project-entry").append(HTMLprojectDates.replace("%data%", projects.projects[project].datesWorked));
+      $(".project-entry").append(HTMLprojectDescription.replace("%data%", projects.projects[project].description));
+      for (img in projects.projects[project].images){
+        console.log(projects.projects[project].images[img]);
+        $(".project-entry").append(HTMLprojectImage.replace("%data%", projects.projects[project].images[img]));
+      }
+
+    };
+
+  };
+};
+projects.display();
