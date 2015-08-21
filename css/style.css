@@ -24,6 +24,11 @@ h6 {
   padding: 0 5%;
 }
 
+.project-entry img{
+  width: 300px;
+  max-height: 250px;
+}
+
 h1 {
   font-size: 40px;
   color: #f5a623;
@@ -212,3 +217,5 @@ span {
     display: block;
   }
 }
+
+/*project images*/
