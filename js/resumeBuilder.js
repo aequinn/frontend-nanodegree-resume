@@ -21,7 +21,35 @@ Using object literal notation to create an objects. Object with peronsal informa
      "Project Management",
      "HTML",
      "JavaScript"
-   ]
+   ],
+   "display" : function(){
+     /*Fill in main bio*/
+
+     $("#header").prepend(HTMLbioPic.replace("%data%", bio.pictureURL));
+     $("#header").prepend(HTMLheaderRole.replace("%data%", bio.role));
+     $("#header").prepend(HTMLheaderName.replace("%data%", bio.name));
+
+     /*Fill in contacts*/
+     if(bio.contacts){
+       for(contact in bio.contacts){
+         var formattedContact = HTMLcontactGeneric.replace("%contact%", contact);
+         formattedContact = formattedContact.replace("%data%", bio.contacts[contact]);
+         $("#topContacts").append(formattedContact);
+       }
+     }
+
+     if(bio.welcomeMessage.length >0){
+       $("#header").append(HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage));
+     }
+
+     //Check if they have skillz and add them to the site
+     if(bio.skills.length > 0){
+       $("#header").append(HTMLskillsStart);
+       for(i=0; i<bio.skills.length; i++){
+         $("#skills").append(HTMLskills.replace("%data%",bio.skills[i]));
+       }
+     };
+   }
  };
 
 /* A work history object, created using literal notation*/
@@ -48,7 +76,25 @@ var work = {
       "datesWorked" : "July 2010 - Aug 2012",
       "description" : "Rotated through various roles and teams taking on impact projects, meeting deliveralbes on demanding timelines."
     }
-  ]
+  ],
+  "display" : function(){
+    //Check for work history and add work if it is available
+    /*Function for displaying the work section*/
+    if(work.jobs.length > 0){
+      //itereate through the jobs and fill out the section for eachone then add it to the page
+      for(job in work.jobs){
+        $("#workExperience").append(HTMLworkStart);
+        //Add Employer & Title
+        $(".work-entry:last").append(HTMLworkEmployer.replace("%data%",work.jobs[job].employer) + ' '+HTMLworkTitle.replace("%data%", work.jobs[job].title));
+        //Add job Location
+        $(".work-entry:last").append(HTMLworkLocation.replace("%data%",work.jobs[job].location));
+        //Add job dates
+        $(".work-entry:last").append(HTMLworkDates.replace("%data%",work.jobs[job].datesWorked));
+        //Add job Description
+        $(".work-entry:last").append(HTMLworkDescription.replace("%data%",work.jobs[job].description));
+      };
+    };
+  }
 };
 
 /*Projects object*/
@@ -63,7 +109,25 @@ var projects = {
         "images/Capstone_Ecosystem.jpg",
         "images/Capstone_surveyResearch.jpg"
        ]
-    }]
+    }],
+    /*Add Encapsulated function to projects*/
+    "display" : function(){
+      console.log(projects.projects);
+      if(projects.projects.length > 0){
+
+        for (project in projects.projects){
+          $("#projects").append(HTMLprojectStart);
+          console.log(projects.projects[project].title);
+          $(".project-entry:last").append(HTMLprojectTitle.replace("%data%", projects.projects[project].title));
+          $(".project-entry:last").append(HTMLprojectDates.replace("%data%", projects.projects[project].datesWorked));
+          $(".project-entry:last").append(HTMLprojectDescription.replace("%data%", projects.projects[project].description));
+          for (img in projects.projects[project].images){
+            console.log(projects.projects[project].images[img]);
+            $(".project-entry:last").append(HTMLprojectImage.replace("%data%", projects.projects[project].images[img]));
+          }
+        };
+      };
+    }
   };
 /* Education Object*/
 var education = {
@@ -121,90 +185,27 @@ var education = {
   ]
 };
 
-/*Logic checks for certain sections*/
+/*Call Display for each object*/
 
-/*Fill in main bio*/
-
-$("#header").prepend(HTMLbioPic.replace("%data%", bio.pictureURL));
-$("#header").prepend(HTMLheaderRole.replace("%data%", bio.role));
-$("#header").prepend(HTMLheaderName.replace("%data%", bio.name));
-
-/*Fill in contats*/
-if(bio.contacts){
-  for(contact in bio.contacts){
-    var formattedContact = HTMLcontactGeneric.replace("%contact%", contact);
-    formattedContact = formattedContact.replace("%data%", bio.contacts[contact]);
-    $("#topContacts").append(formattedContact);
-  }
-}
-
-if(bio.welcomeMessage.length >0){
-  $("#header").append(HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage));
-}
-
-//Check if they have skillz and add them to the site
-if(bio.skills.length > 0){
-  $("#header").append(HTMLskillsStart);
-  for(i=0; i<bio.skills.length; i++){
-    $("#skills").append(HTMLskills.replace("%data%",bio.skills[i]));
-  }
-};
-
-//Check for work history and add work if it is available
-/*Function for displaying the work section*/
-function displayWork(){
-  if(work.jobs.length > 0){
-    //itereate through the jobs and fill out the section for eachone then add it to the page
-    for(job in work.jobs){
-      $("#workExperience").append(HTMLworkStart);
-      //Add Employer & Title
-      $(".work-entry:last").append(HTMLworkEmployer.replace("%data%",work.jobs[job].employer) + ' '+HTMLworkTitle.replace("%data%", work.jobs[job].title));
-      //Add job Location
-      $(".work-entry:last").append(HTMLworkLocation.replace("%data%",work.jobs[job].location));
-      //Add job dates
-      $(".work-entry:last").append(HTMLworkDates.replace("%data%",work.jobs[job].datesWorked));
-      //Add job Description
-      $(".work-entry:last").append(HTMLworkDescription.replace("%data%",work.jobs[job].description));
-    };
-  };
-}
-displayWork();
-
-/*Internationalization Button*/
-$("#main").append(internationalizeButton);
-
-function inName(name){
-
-  var newName = name.trim().toLowerCase().split(" ");
-  var firstName = newName[0].slice(0,1).toUpperCase();
-  firstName = firstName + newName[0].slice(1).toLowerCase();
-  var lastName = newName[1].toUpperCase();
-
-  return firstName + " " +  lastName;;
-}
-/*Click Tracking*/
-$(document).click(function(loc){
-  logClicks(loc.pageX, loc.pageY);
-});
-
-/*Add Encapsulated function to projects*/
-projects.display = function(){
-  console.log(projects.projects);
-  if(projects.projects.length > 0){
-
-    for (project in projects.projects){
-      $("#projects").append(HTMLprojectStart);
-      console.log(projects.projects[project].title);
-      $(".project-entry").append(HTMLprojectTitle.replace("%data%", projects.projects[project].title));
-      $(".project-entry").append(HTMLprojectDates.replace("%data%", projects.projects[project].datesWorked));
-      $(".project-entry").append(HTMLprojectDescription.replace("%data%", projects.projects[project].description));
-      for (img in projects.projects[project].images){
-        console.log(projects.projects[project].images[img]);
-        $(".project-entry").append(HTMLprojectImage.replace("%data%", projects.projects[project].images[img]));
-      }
-
-    };
-
-  };
-};
+bio.display();
+work.display();
 projects.display();
+
+//Features in progress
+
+// /*Internationalization Button*/
+// $("#main").append(internationalizeButton);
+//
+// function inName(name){
+//
+//   var newName = name.trim().toLowerCase().split(" ");
+//   var firstName = newName[0].slice(0,1).toUpperCase();
+//   firstName = firstName + newName[0].slice(1).toLowerCase();
+//   var lastName = newName[1].toUpperCase();
+//
+//   return firstName + " " +  lastName;;
+// }
+// /*Click Tracking*/
+// $(document).click(function(loc){
+//   logClicks(loc.pageX, loc.pageY);
+// });
