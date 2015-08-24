@@ -186,10 +186,18 @@ var education = {
 };
 
 /*Call Display for each object*/
-
 bio.display();
 work.display();
 projects.display();
+
+/*TO DO
+* - Display Education
+* - Display Online courses
+*/
+
+//Add Places I've lived
+$("#mapDiv").append(googleMap);
+
 
 //Features in progress
 
