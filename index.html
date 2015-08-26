@@ -1,24 +1,12 @@
 <!DOCTYPE html>
-<!--
-The <head> of a website generally links to important resources the page will
-need to load. You'll see a lot of <link>s to CSS files for styles and
-<scripts> for JavaScript files to build interactions.
--->
 <head>
 
   <meta charset="utf-8">
   <title>My Resume</title>
 
-  <!-- Load the page styles. -->
   <link href="css/style.css" rel="stylesheet">
 
-  <!--
-  jQuery is a common JavaScript library for reading and making changes to the
-  Document Object Model (DOM).
-  -->
   <script src="js/jQuery.js"></script>
-
-  <!-- More on helper.js in the class -->
   <script src="js/helper.js"></script>
 
   <!--
@@ -27,7 +15,8 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
   -->
   <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places"></script>
   <!-- <script type="text/javascript" src="js/extraProblems.js"></script> -->
-  <meta name="viewport" content="width=device-width">
+
+<meta name="viewport" content="width=device-width">
 </head>
 <body>
   <div id="main">
@@ -49,7 +38,7 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
     </div>
     <div id="lets-connect" class="dark-gray">
       <h2 class="orange center-text">Let's Connect</h2>
-        <ul id="footerContacts" class="flex-box">
+      <ul id="footerContacts" class="flex-box">
       </ul>
     </div>
   </div>
@@ -60,27 +49,27 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
   <script src="js/resumeBuilder.js"></script>
 
   <script type="text/javascript">
-    if(document.getElementsByClassName('flex-item').length === 0) {
-      document.getElementById('topContacts').style.backgroundColor = '#000';
-    }
-    if(document.getElementsByTagName('h1').length === 0) {
-      document.getElementById('header').style.backgroundColor = '#000';
-    }
-    if(document.getElementsByClassName('work-entry').length === 0) {
-      document.getElementById('workExperience').style.backgroundColor = '#000';
-    }
-    if(document.getElementsByClassName('project-entry').length === 0) {
-      document.getElementById('projects').style.backgroundColor = '#000';
-    }
-    if(document.getElementsByClassName('education-entry').length === 0) {
-      document.getElementById('education').style.backgroundColor = '#000';
-    }
-    if(document.getElementsByClassName('flex-item').length === 0) {
-      document.getElementById('lets-connect').style.backgroundColor = '#000';
-    }
-    if(document.getElementById('map') === null) {
-      document.getElementById('mapDiv').style.backgroundColor = '#000';
-    }
+  if(document.getElementsByClassName('flex-item').length === 0) {
+    document.getElementById('topContacts').style.backgroundColor = '#000';
+  }
+  if(document.getElementsByTagName('h1').length === 0) {
+    document.getElementById('header').style.backgroundColor = '#000';
+  }
+  if(document.getElementsByClassName('work-entry').length === 0) {
+    document.getElementById('workExperience').style.backgroundColor = '#000';
+  }
+  if(document.getElementsByClassName('project-entry').length === 0) {
+    document.getElementById('projects').style.backgroundColor = '#000';
+  }
+  if(document.getElementsByClassName('education-entry').length === 0) {
+    document.getElementById('education').style.backgroundColor = '#000';
+  }
+  if(document.getElementsByClassName('flex-item').length === 0) {
+    document.getElementById('lets-connect').style.backgroundColor = '#000';
+  }
+  if(document.getElementById('map') === null) {
+    document.getElementById('mapDiv').style.backgroundColor = '#000';
+  }
   </script>
 </body>
 </html>
