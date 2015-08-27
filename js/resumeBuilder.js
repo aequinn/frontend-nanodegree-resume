@@ -12,13 +12,14 @@ var bio = {
     "location" : "Ann Arbor, MI"
   },
   "pictureURL" : "images/200x200.jpg",
-  "welcomeMessage" : "I'm Anthony and I like to build things that help solve problems",
+  "welcomeMessage" : "I'm Anthony and I like to build solutions to problems. My experience is mostly in large in-house applications. My projects are sometimes fine tuning solutions from the past and other times creating new solutions, but almost always around business and organizational processes.",
   "skills" :
   [
     "UX Design",
-    "Project Management",
+    "Project & Product Management",
     "HTML",
-    "JavaScript"
+    "JavaScript",
+    "CSS"
   ],
   "display" : function(sectionID){
     /*Fill in main bio*/
