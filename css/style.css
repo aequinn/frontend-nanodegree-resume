@@ -12,104 +12,33 @@ h6 {
   padding:0;
   margin:0;
   font-family: "Roboto", sans-serif;
+  color: #3A3E4C
+}
+/*
+* Color Palette
+* http://paletton.com/#uid=53Q0u0kls87c3PP-whO00AB8ge0
+*/
+/*Color Options*/
+.light-gray-text{
+  color: #BBBBBB;
+}
+.light-blue-text{
+  color: #97A7E2;
+}
+.dark-text{
+  color: #3A3E4C;
+}
+
+.light-background{
+  background-color: #f3f3f3;
+}
+
+.dark-background{
+  background-color: #140B4D;
 }
 
 .clear-fix {
   overflow: auto;
-}
-
-.education-entry,
-.work-entry,
-.project-entry {
-  padding: 0 5%;
-}
-
-h1 {
-  font-size: 40px;
-  color: #f5a623;
-  line-height: 48px;
-  display: inline;
-}
-
-h2 {
-  font-weight: bold;
-  font-size: 24px;
-  color: #999;
-  line-height: 29px;
-  padding: 10px;
-}
-
-h3 {
-  font-style: italic;
-  font-size: 20px;
-  color: #000;
-  line-height: 22px;
-}
-
-h4 {
-  font-weight: bold;
-  font-size: 14px;
-  color: #4a4a4a;
-  line-height: 17px;
-}
-
-h2,
-h3,
-h4,
-h5 {
-  padding:10px 5%;
-
-}
-
-
-.date-text {
-  font-style: italic;
-  font-size: 14px;
-  color: #999;
-  line-height: 16px;
-  float: left;
-}
-
-.location-text {
-  font-style: italic;
-  font-size: 14px;
-  color: #999;
-  line-height: 16px;
-  float: right;
-
-}
-
-p {
-  font-size: 14px;
-  color: #333;
-  line-height: 21px;
-}
-
-a {
-  color: #1199c3;
-  text-decoration: none;
-  margin-top: 10px;
-  display: block;
-}
-
-.welcome-message {
-  font-style: italic;
-  font-size: 18px;
-  color: #f3f3f3;
-  line-height: 28px;
-}
-
-#skills-h3 {
-  color: #f5ae23;
-  display: none;
-}
-
-.orange {
-  background-color: #f5ae23;
-}
-
-.orange-text {
-  color: #f5ae23;
 }
 
 .white-text {
@@ -127,9 +56,94 @@ a {
   background-color: #4a4a4a;
 }
 
+.education-entry,
+.work-entry,
+.project-entry {
+  padding: 0 5%;
+}
+
+.project-entry img{
+  width: 300px;
+  max-height: 250px;
+}
+
+h1 {
+  font-size: 40px;
+  line-height: 48px;
+  display: inline;
+}
+
+h2 {
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 29px;
+  padding: 10px;
+}
+
+h3 {
+  font-style: italic;
+  font-size: 20px;
+  line-height: 22px;
+}
+
+h4 {
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 17px;
+}
+
+h2,
+h3,
+h4,
+h5 {
+  padding:10px 5%;
+
+}
+
+
+.date-text {
+  font-style: italic;
+  font-size: 14px;
+  line-height: 16px;
+  float: left;
+}
+
+.location-text {
+  font-style: italic;
+  font-size: 14px;
+  line-height: 16px;
+  float: right;
+
+}
+
+p {
+  font-size: 14px;
+  line-height: 21px;
+}
+
+a {
+  color: #1199c3;
+  text-decoration: none;
+  margin-top: 10px;
+  display: block;
+}
+
+.welcome-message {
+  font-style: italic;
+  font-size: 18px;
+  line-height: 28px;
+}
+
+#skills-h3 {
+  display: none;
+}
+
+
+
+
 /* TODO: Replace with image later */
 #header {
-  background-color: #484848;
+  background-color: #140B4D;
 }
 
 .flex-box {
@@ -154,6 +168,7 @@ ul {
   padding: 10px;
   width: 200px;
   display: none;
+  border-radius: 50%;
 }
 
 img {
@@ -212,3 +227,5 @@ span {
     display: block;
   }
 }
+
+/*project images*/
